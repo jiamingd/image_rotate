@@ -14,7 +14,6 @@ import java.util.concurrent.TimeoutException;
  */
 public class PublisherConsole {
 
-    //TODO: user input to close connection in a graceful way
     public static void main(String[] args) throws IOException, TimeoutException {
         ClassLoader classLoader = PublisherConsole.class.getClassLoader();
         File originalFile = new File(classLoader.getResource("Whatnaught.png").getFile());

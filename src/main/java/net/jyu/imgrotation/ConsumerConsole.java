@@ -14,7 +14,6 @@ import java.util.logging.Logger;
 public class ConsumerConsole {
     static Integer S3_RETRY_LIMIT = 3;
 
-    //TODO: user input to close connection in a graceful way
     public static void main(String[] args) throws IOException, TimeoutException {
         Connection connectionConsumer = ConnectionCreator.newConnection(ConnectionCreator.HOST_NAME);
         Connection connectionPublisher = ConnectionCreator.newConnection(ConnectionCreator.HOST_NAME);
@@ -23,10 +22,11 @@ public class ConsumerConsole {
 
 
         consumerChannel.queueDeclare(net.jyu.imgrotation.ConnectionCreator.ROTATE_QUEUE, false, false, false, null);
-        //Note: register with direct exchange to consumer only key specific from Q, for user guest, below approch not granted
-//        channel.queueBind(ChannelCreator.ROTATE_QUEUE, ChannelCreator.EXCHANGE_NAME, ChannelCreator.NORMAL_ROTATING_KEY);
-
-        System.out.println(" [*] Waiting for messages. To exit press CTRL+C");
+        /*
+        Note: register with direct exchange to consumer only key specific from Q, for user guest, below approch not granted
+        channel.queueBind(ChannelCreator.ROTATE_QUEUE, ChannelCreator.EXCHANGE_NAME, ChannelCreator.NORMAL_ROTATING_KEY);
+        */
+        System.out.println(" [*] Waiting for messages ...");
 
         Consumer consumer = new PngRotateConsumer(consumerChannel, publisherChannel);
 
