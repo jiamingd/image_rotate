@@ -84,7 +84,7 @@ public class PngRotateConsumer extends DefaultConsumer {
 
         BufferedImage destinationBI = bio.filter(sourceBI, null);
 
-        File processedFile = new File("/Users/jyu/Downloads/consumer_rotated.png");
+        File processedFile = new File("/tmp/consumer_rotated.png");
 
         ImageIO.write(destinationBI, "png", processedFile);
 
